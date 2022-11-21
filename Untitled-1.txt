@@ -1,0 +1,6 @@
+say(getTile(math.floor(getBot().x/32), math.floor(getBot().y/32 + 1)).isSolid)
+
+
+if getTile(math.floor(getBot().x/32), math.floor(getBot().y/32 + 1)).isSolid then
+    say("test")
+end

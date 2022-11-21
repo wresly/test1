@@ -1,0 +1,21 @@
+seedid = 13
+dooritemid= 12
+delayplant= 100
+local statust = true
+for _, tile in pairs(getTiles()) do
+    if tile.fg ~= 0 and tile.y > 1 and findItem(seedid) > 0 and getTile(tile.x, tile.y - 1).fg == 0 and
+        getTile(tile.x, tile.y).fg ~= seedid and getTile(tile.x, tile.y).fg ~= seedid - 1 and
+        getTile(tile.x, tile.y).isSolid and getTile(tile.x, tile.y).fg ~= dooritemid then
+        findPath(tile.x, tile.y - 1)
+        if statust then
+            sleep(500)
+            statust = false
+        end
+        while getTile(math.floor(getBot().x / 32), math.floor(getBot().y / 32)).fg == 0 do
+            sleep(delayplant)
+            place(seedid, 0, 0)
+            sleep(40)
+
+        end
+    end
+end
